@@ -3,11 +3,12 @@ import PostListItem from './ListItem/PostListItem'
 
 let PostList = (props) => {
     let posts = props.posts.map( (post, i) => { 
-        if(i < props.postsLimit) {
-            return (<PostListItem key={post.id} id={post.id} postTitle={post.title} postBody={post.body}/>)
-        } else {
-            return null
-        }
+        let { body, id, title } = { ...post }
+
+        return (i < props.postsLimit && post ? 
+                <PostListItem key={post.id} id={id} postTitle={title} postBody={body}/> : null)
+
+        
     })
             
 
